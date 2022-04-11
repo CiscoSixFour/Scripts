@@ -1,0 +1,29 @@
+#!/bin/zsh
+
+## Script that asks for input and changes redshift settings by Cisco64 ##
+
+echo "Welcome To Redshift-64"
+echo "1=[Temperature] 2=[Brightness]"
+echo -n "Enter Number: "
+read num
+
+if [[ $num = 1 ]]
+then
+	echo "Set Temperature [Default 6500]" 
+	read -n TEMP\?"Temperature: "
+	redshift -P -O $TEMP
+	echo "Set Temperature To $TEMP"
+elif [[ $num = 2 ]]
+then
+	echo "Type 1 To Reset"
+	read -n BRIGHT\?"1? "
+		if [[ $BRIGHT = 1 ]]
+		then redshift -x
+#	echo "Set Brightness From 0.1-1.0"
+#	read -n BRIGHT\?"Brightness: "
+#	redshift -b $BRIGHT:$BRIGHT
+#	echo "Brightness Set To $BRIGHT"
+else
+	echo "You Failed, Exiting."
+fi
+	
